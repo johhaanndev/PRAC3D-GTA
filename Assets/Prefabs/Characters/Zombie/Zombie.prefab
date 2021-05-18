@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2294246034103945233
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3678035143822511308}
+  m_Layer: 0
+  m_Name: hitpoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3678035143822511308
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2294246034103945233}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.4, y: 1.406, z: 1.189}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6978564639133580327}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &257401375
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -24,9 +54,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2
+  m_Height: 2.129302
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1.0535233, z: 0}
 --- !u!195 &257401374
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -41,12 +71,12 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 1.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 1
+  m_BaseOffset: 0.02
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &257401379
@@ -62,12 +92,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   navMeshAgent: {fileID: 0}
+  anim: {fileID: 0}
   player: {fileID: 0}
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  hitPoint: {fileID: 3678035143822511308}
+  attackRange: 1
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  zombieHealth: {fileID: 1238230861}
+--- !u!114 &1238230861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7751547338704348829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2be5f32947377e147933fc2184c99b67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  isDead: 0
 --- !u!1001 &7445135101590363084
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -78,7 +129,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: f82af7649f2c1c54c86a309d731256a2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.33
+      value: 1.33
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f82af7649f2c1c54c86a309d731256a2,
         type: 3}
@@ -88,7 +139,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: f82af7649f2c1c54c86a309d731256a2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.4
+      value: 15.93
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f82af7649f2c1c54c86a309d731256a2,
         type: 3}
@@ -133,13 +184,29 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f82af7649f2c1c54c86a309d731256a2,
         type: 3}
       propertyPath: m_Name
-      value: mremireh_o_desbiens@T-Pose Variant
+      value: Zombie
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f82af7649f2c1c54c86a309d731256a2,
+        type: 3}
+      propertyPath: m_TagString
+      value: Zombie
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: f82af7649f2c1c54c86a309d731256a2,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 567f6c220e4c10544988787cb143a429, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f82af7649f2c1c54c86a309d731256a2, type: 3}
 --- !u!1 &7751547338704348829 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f82af7649f2c1c54c86a309d731256a2,
+    type: 3}
+  m_PrefabInstance: {fileID: 7445135101590363084}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6978564639133580327 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f82af7649f2c1c54c86a309d731256a2,
     type: 3}
   m_PrefabInstance: {fileID: 7445135101590363084}
   m_PrefabAsset: {fileID: 0}

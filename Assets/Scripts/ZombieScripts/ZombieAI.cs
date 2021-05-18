@@ -22,6 +22,10 @@ public class ZombieAI : MonoBehaviour
     public GameObject player;
     public Transform[] waypoints;
 
+    public Transform hitPoint;
+    public float attackRange = 2f;
+    public LayerMask playerLayer;
+
     [Header("Other scripts")]
     public ZombieHealth zombieHealth;
 
@@ -71,6 +75,20 @@ public class ZombieAI : MonoBehaviour
             currentState.Impact();
         }
     }
+
+    private void CheckIfPlayerHit()
+    {
+        if (Physics.CheckSphere(hitPoint.position, attackRange, playerLayer))
+        {
+            Debug.Log("PlayerHit");
+            player.GetComponent<PlayerHealth>().TakeDamage(25);
+        }
+        else
+        {
+            Debug.Log("miss");
+        }
+    }
+
 
     private void OnTriggerEnter(Collider coll)
     {
