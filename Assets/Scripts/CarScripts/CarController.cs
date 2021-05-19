@@ -20,6 +20,8 @@ public class CarController : MonoBehaviour
     public GameObject player;
     public Transform leaveSpot;
 
+    public LayerMask zombieLayer;
+
     // Start is called before the first frame update
     void Start()
     {
