@@ -7,6 +7,7 @@ using UnityEngine.AI;
 public class HumanController : MonoBehaviour
 {
     private NavMeshAgent agent;
+    private Animator anim;
 
     public Transform[] waypoints;
     private int nextWaypoint = 0;
@@ -14,24 +15,34 @@ public class HumanController : MonoBehaviour
     public bool isFleeing = false;
     public float safeDistance = 15f;
 
+    public bool isDead = false;
+    public float burySpeed = 0f;
+
     private GameObject zombieToRunAway = null;
+    public GameObject zombieToSpawn;
+    public LayerMask playerLayer;
 
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!isFleeing)
+        anim.SetFloat("Speed", agent.velocity.magnitude);
+        if (!isDead)
         {
-            WalkingAround();
-        }
-        else
-        {
-            Flee();
+            if (!isFleeing)
+            {
+                WalkingAround();
+            }
+            else
+            {
+                Flee();
+            }
         }
     }
 
@@ -69,7 +80,6 @@ public class HumanController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Zombie"))
         {
-            Debug.Log("Zombie close");
             zombieToRunAway = other.gameObject;
             isFleeing = true;
         }
@@ -79,9 +89,26 @@ public class HumanController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Zombie"))
         {
-            Debug.Log("Zombie close");
             zombieToRunAway = other.gameObject;
             isFleeing = true;
         }
+    }
+
+    public void HumanDie()
+    {
+        isDead = true;
+        agent.Stop();
+        anim.SetTrigger("Die");
+        StartCoroutine(BuryInstantiateZombieAndDestroy());
+    }
+
+    private IEnumerator BuryInstantiateZombieAndDestroy()
+    {
+        yield return new WaitForSeconds(3f);
+        var zombie = (GameObject)Instantiate(zombieToSpawn, transform.position, transform.rotation);
+        zombie.GetComponent<ZombieAI>().waypoints = waypoints;
+        zombie.GetComponent<ZombieAI>().player = GameObject.Find("Player");
+        zombie.GetComponent<ZombieAI>().playerLayer = playerLayer;
+        Destroy(gameObject);
     }
 }

@@ -67,7 +67,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 2
+  m_Speed: 0.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -103,7 +103,8 @@ MonoBehaviour:
   attackRange: 1
   playerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
+  burySpeed: 0
   zombieHealth: {fileID: 1238230861}
 --- !u!114 &1238230861
 MonoBehaviour:
@@ -179,6 +180,11 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: f82af7649f2c1c54c86a309d731256a2,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 396820112205948169, guid: f82af7649f2c1c54c86a309d731256a2,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f82af7649f2c1c54c86a309d731256a2,

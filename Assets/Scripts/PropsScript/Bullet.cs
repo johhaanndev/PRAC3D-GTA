@@ -15,6 +15,11 @@ public class Bullet : MonoBehaviour
             coll.gameObject.GetComponent<ZombieAI>().Hit(damage); ;
         }
 
+        if (coll.gameObject.CompareTag("Human"))
+        {
+            coll.gameObject.GetComponent<HumanController>().HumanDie();
+        }
+
         Invoke(nameof(DestroyGO), 2f);
     }
 

@@ -26,12 +26,15 @@ public class ZombieAI : MonoBehaviour
     public float attackRange = 2f;
     public LayerMask playerLayer;
 
+    public float burySpeed = 0f;
+
     [Header("Other scripts")]
     public ZombieHealth zombieHealth;
 
     // Start is called before the first frame update
     void Start()
     {
+        
         navMeshAgent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
 
@@ -55,10 +58,22 @@ public class ZombieAI : MonoBehaviour
             {
                 anim.SetBool("isAttacking", false);
             }
+
+            if (currentState == wanderState)
+            {
+                navMeshAgent.speed = 0.7f;
+            }
+            if (currentState == chaseState)
+            {
+                navMeshAgent.speed = 1f;
+            }
         }
         else
         {
-            navMeshAgent.Stop();
+            navMeshAgent.enabled = false;
+            GetComponent<SphereCollider>().enabled = false;
+            GetComponent<CapsuleCollider>().enabled = false;
+            transform.position =new Vector3(transform.position.x, transform.position.y - (burySpeed * Time.deltaTime), transform.position.z);
         }
     }
 
