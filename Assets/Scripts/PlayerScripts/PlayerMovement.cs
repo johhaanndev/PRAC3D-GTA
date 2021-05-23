@@ -24,9 +24,9 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Drive parameters")]
     public bool isDriving = false;
-    public CarController carController;
-    public Transform carSpot;
-    public Transform leaveCarSpot;
+    //public CarController carController;
+    //public Transform carSpot;
+    //public Transform leaveCarSpot;
     public SkinnedMeshRenderer meshRenderers;
 
 
@@ -47,13 +47,14 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            transform.position = carSpot.position;
-            if (!carController.isDriving)
-            {
-                isDriving = false;
-                controller.enabled = true;
-                transform.position = leaveCarSpot.position;
-            }
+            controller.enabled = false;
+            //transform.position = carSpot.position;
+            //if (!carController.isDriving)
+            //{
+            //    isDriving = false;
+            //    controller.enabled = true;
+            //    transform.position = leaveCarSpot.position;
+            //}
         }
     }
 
@@ -99,16 +100,15 @@ public class PlayerMovement : MonoBehaviour
             {
                 Debug.Log("F pressed");
                 isDriving = true;
-                carController.isDriving = true;
 
-                GetComponent<ShootingController>().enabled = false;
-                GetComponent<Rigidbody>().useGravity = false;
-                GetComponent<CapsuleCollider>().enabled = false;
-                meshRenderers.enabled = false;
-                controller.enabled = false;
+                //getcomponent<shootingcontroller>().enabled = false;
+                //getcomponent<rigidbody>().usegravity = false;
+                //getcomponent<capsulecollider>().enabled = false;
+                //meshrenderers.enabled = false;
+                //controller.enabled = false;
 
-                transform.position = carSpot.position;
-                transform.parent = carSpot;
+                //transform.position = carspot.position;
+                //transform.parent = carspot;
             }
         }
     }

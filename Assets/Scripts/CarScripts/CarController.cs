@@ -34,26 +34,28 @@ public class CarController : MonoBehaviour
         moveInput = Input.GetAxisRaw("Vertical");
         turnInput = Input.GetAxisRaw("Horizontal");
 
-        if (isDriving)
+        if (player.GetComponent<PlayerMovement>().isDriving)
         {
-            timer += Time.deltaTime;
+            Debug.Log("Is driving");
+            //timer += Time.deltaTime;
             moveInput *= moveInput > 0 ? fwdSpeed : revSpeed;
 
             float newRotation = turnInput * turnSpeed * Time.deltaTime * Input.GetAxis("Vertical");
             transform.Rotate(0f, newRotation, 0f, Space.World);
 
+            DeactivatePlayerComponents();
             player.transform.position = transform.position;
 
-            if (Input.GetKeyDown(KeyCode.F) && timer >= minimumTimeToLeave)
-            {                
-                timer = 0;
-                isDriving = false;
-                transform.position = leaveSpot.position;
-                player.GetComponent<ShootingController>().enabled = true;
-                player.GetComponent<Rigidbody>().useGravity = true;
-                player.GetComponent<CapsuleCollider>().enabled = true;
-                player.GetComponent<PlayerMovement>().meshRenderers.enabled = true;
-            }
+            //if (Input.GetKeyDown(KeyCode.F) && timer >= minimumTimeToLeave)
+            //{                
+            //    timer = 0;
+            //    isDriving = false;
+            //    transform.position = leaveSpot.position;
+            //    player.GetComponent<ShootingController>().enabled = true;
+            //    player.GetComponent<Rigidbody>().useGravity = true;
+            //    player.GetComponent<CapsuleCollider>().enabled = true;
+            //    player.GetComponent<PlayerMovement>().meshRenderers.enabled = true;
+            //}
         }
 
         transform.position = sphereRB.transform.position;
@@ -62,5 +64,12 @@ public class CarController : MonoBehaviour
     private void FixedUpdate()
     {
         sphereRB.AddForce(transform.forward * moveInput, ForceMode.Acceleration);
+    }
+
+    private void DeactivatePlayerComponents()
+    {
+        player.GetComponent<ShootingController>().enabled = false;
+        player.GetComponent<CapsuleCollider>().enabled = false;
+        player.GetComponent<PlayerMovement>().meshRenderers.enabled = false;
     }
 }
