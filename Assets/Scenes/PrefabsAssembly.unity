@@ -1210,6 +1210,21 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1453641829745462304, guid: 89f0f7f0e8351474ca23e2f9225ba7bc,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1453641829745462304, guid: 89f0f7f0e8351474ca23e2f9225ba7bc,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1453641829745462304, guid: 89f0f7f0e8351474ca23e2f9225ba7bc,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1453641829745462335, guid: 89f0f7f0e8351474ca23e2f9225ba7bc,
         type: 3}
       propertyPath: m_Layer

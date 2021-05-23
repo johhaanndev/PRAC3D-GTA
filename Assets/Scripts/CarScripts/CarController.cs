@@ -36,8 +36,7 @@ public class CarController : MonoBehaviour
 
         if (player.GetComponent<PlayerMovement>().isDriving)
         {
-            Debug.Log("Is driving");
-            //timer += Time.deltaTime;
+            timer += Time.deltaTime;
             moveInput *= moveInput > 0 ? fwdSpeed : revSpeed;
 
             float newRotation = turnInput * turnSpeed * Time.deltaTime * Input.GetAxis("Vertical");
@@ -45,17 +44,20 @@ public class CarController : MonoBehaviour
 
             DeactivatePlayerComponents();
             player.transform.position = transform.position;
+            player.transform.parent = transform;
 
-            //if (Input.GetKeyDown(KeyCode.F) && timer >= minimumTimeToLeave)
-            //{                
-            //    timer = 0;
-            //    isDriving = false;
-            //    transform.position = leaveSpot.position;
-            //    player.GetComponent<ShootingController>().enabled = true;
-            //    player.GetComponent<Rigidbody>().useGravity = true;
-            //    player.GetComponent<CapsuleCollider>().enabled = true;
-            //    player.GetComponent<PlayerMovement>().meshRenderers.enabled = true;
-            //}
+            if (Input.GetKeyDown(KeyCode.F) && timer >= minimumTimeToLeave)
+            {                
+                timer = 0;
+
+                Debug.Log("You would get out of car");
+                player.GetComponent<PlayerMovement>().isDriving = false;
+                player.GetComponent<ShootingController>().enabled = true;
+                player.GetComponent<CapsuleCollider>().enabled = true;
+                player.GetComponent<PlayerMovement>().meshRenderers.enabled = true;
+                transform.position = leaveSpot.position;
+                player.transform.parent = null;
+            }
         }
 
         transform.position = sphereRB.transform.position;

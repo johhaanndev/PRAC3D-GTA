@@ -42,19 +42,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isDriving)
         {
-            transform.parent = null;
+            controller.enabled = true;
             BasicMovement();
         }
         else
         {
             controller.enabled = false;
-            //transform.position = carSpot.position;
-            //if (!carController.isDriving)
-            //{
-            //    isDriving = false;
-            //    controller.enabled = true;
-            //    transform.position = leaveCarSpot.position;
-            //}
         }
     }
 
