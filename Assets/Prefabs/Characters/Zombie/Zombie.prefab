@@ -94,11 +94,6 @@ MonoBehaviour:
   navMeshAgent: {fileID: 0}
   anim: {fileID: 0}
   player: {fileID: 0}
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   hitPoint: {fileID: 3678035143822511308}
   attackRange: 1
   playerLayer:
@@ -106,6 +101,9 @@ MonoBehaviour:
     m_Bits: 256
   burySpeed: 0
   zombieHealth: {fileID: 1238230861}
+  wanderRadius: 10
+  wanderDistance: 5
+  wanderJitter: 2
 --- !u!114 &1238230861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,9 +118,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   isDead: 0
-  carLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1001 &7445135101590363084
 PrefabInstance:
   m_ObjectHideFlags: 0

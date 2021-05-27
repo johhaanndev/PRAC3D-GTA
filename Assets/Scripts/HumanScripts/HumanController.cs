@@ -106,7 +106,6 @@ public class HumanController : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         var zombie = (GameObject)Instantiate(zombieToSpawn, transform.position, transform.rotation);
-        zombie.GetComponent<ZombieAI>().waypoints = waypoints;
         zombie.GetComponent<ZombieAI>().player = GameObject.Find("Player");
         zombie.GetComponent<ZombieAI>().playerLayer = playerLayer;
         Destroy(gameObject);

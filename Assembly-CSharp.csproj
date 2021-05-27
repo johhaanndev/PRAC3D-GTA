@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\CarScripts\CarEnterExit.cs" />
     <Compile Include="Assets\Scripts\CarScripts\CarMovement.cs" />
+    <Compile Include="Assets\Scripts\CarScripts\CarRunOver.cs" />
     <Compile Include="Assets\Scripts\HumanScripts\HumanController.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerMovement.cs" />

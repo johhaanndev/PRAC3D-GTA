@@ -20,7 +20,6 @@ public class ZombieAI : MonoBehaviour
     public Animator anim;
 
     public GameObject player;
-    public Transform[] waypoints;
 
     public Transform hitPoint;
     public float attackRange = 2f;
@@ -30,6 +29,9 @@ public class ZombieAI : MonoBehaviour
 
     [Header("Other scripts")]
     public ZombieHealth zombieHealth;
+    public float wanderRadius;
+    public float wanderDistance;
+    public float wanderJitter;
 
     // Start is called before the first frame update
     void Start()
@@ -113,6 +115,14 @@ public class ZombieAI : MonoBehaviour
             {
                 currentState = chaseState;
             }
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Car"))
+        {
+            Debug.Log("car hit");
         }
     }
 }
