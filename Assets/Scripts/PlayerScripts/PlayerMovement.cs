@@ -24,9 +24,6 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Drive parameters")]
     public bool isDriving = false;
-    //public CarController carController;
-    //public Transform carSpot;
-    //public Transform leaveCarSpot;
     public SkinnedMeshRenderer meshRenderers;
 
 
@@ -91,17 +88,9 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
-                Debug.Log("F pressed");
                 isDriving = true;
-
-                //getcomponent<shootingcontroller>().enabled = false;
-                //getcomponent<rigidbody>().usegravity = false;
-                //getcomponent<capsulecollider>().enabled = false;
-                //meshrenderers.enabled = false;
-                //controller.enabled = false;
-
-                //transform.position = carspot.position;
-                //transform.parent = carspot;
+                other.GetComponent<CarEnterExit>().enabled = true;
+                other.GetComponent<CarMovement>().enabled = true;
             }
         }
     }
