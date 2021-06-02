@@ -8,6 +8,9 @@ TagManager:
   - Zombie
   - Human
   - Car
+  - ZombiesTrigger
+  - ZombieBonus
+  - Goal
   layers:
   - Default
   - TransparentFX

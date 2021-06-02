@@ -19,6 +19,8 @@ public class ZombieAI : MonoBehaviour
     [HideInInspector]
     public Animator anim;
 
+    public Transform[] walkPoints;
+
     public GameObject player;
 
     public Transform hitPoint;
@@ -27,16 +29,17 @@ public class ZombieAI : MonoBehaviour
 
     public float burySpeed = 0f;
 
-    [Header("Other scripts")]
+    [Header("Others")]
     public ZombieHealth zombieHealth;
-    public float wanderRadius;
-    public float wanderDistance;
-    public float wanderJitter;
+    public GameObject humanParticles;
+
+    //public float wanderRadius;
+    //public float wanderDistance;
+    //public float wanderJitter;
 
     // Start is called before the first frame update
     void Start()
     {
-        
         navMeshAgent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
 
@@ -98,6 +101,7 @@ public class ZombieAI : MonoBehaviour
         if (Physics.CheckSphere(hitPoint.position, attackRange, playerLayer))
         {
             Debug.Log("PlayerHit");
+            var particles = (GameObject)Instantiate(humanParticles, hitPoint.position, hitPoint.rotation);
             player.GetComponent<PlayerHealth>().TakeDamage(25);
         }
         else

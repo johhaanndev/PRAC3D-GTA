@@ -108,6 +108,7 @@ public class HumanController : MonoBehaviour
         var zombie = (GameObject)Instantiate(zombieToSpawn, transform.position, transform.rotation);
         zombie.GetComponent<ZombieAI>().player = GameObject.Find("Player");
         zombie.GetComponent<ZombieAI>().playerLayer = playerLayer;
+        zombie.GetComponent<ZombieAI>().walkPoints = waypoints;
         Destroy(gameObject);
     }
 }

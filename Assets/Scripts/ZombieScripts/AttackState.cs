@@ -25,15 +25,9 @@ public class AttackState : IZombieState
         myZombie.anim.SetBool("isAttacking", true);
     }
 
-    public void GoToAttackState()
-    {
-        throw new System.NotImplementedException();
-    }
+    public void GoToAttackState() { }
 
-    public void GoToWanderState()
-    {
-        throw new System.NotImplementedException();
-    }
+    public void GoToWanderState() { }
 
     public void Impact() { }
     

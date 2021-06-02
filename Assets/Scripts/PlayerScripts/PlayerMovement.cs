@@ -37,14 +37,17 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isDriving)
+        if (!GetComponent<PlayerHealth>().isDead)
         {
-            controller.enabled = true;
-            BasicMovement();
-        }
-        else
-        {
-            controller.enabled = false;
+            if (!isDriving)
+            {
+                controller.enabled = true;
+                BasicMovement();
+            }
+            else
+            {
+                controller.enabled = false;
+            }
         }
     }
 

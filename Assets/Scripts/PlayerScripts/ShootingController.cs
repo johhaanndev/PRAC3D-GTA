@@ -45,16 +45,15 @@ public class ShootingController : MonoBehaviour
     void Update()
     {
         UpdateHUD();
-        if (!playerHealth.isDead)
-        {
+        //if (!playerHealth.isDead)
+        //{
             timer += Time.deltaTime;
             if (timer >= fireRate)
             {
                 if (Input.GetButton("Fire1"))
                 {
                     timer = 0f;
-                    var bullet = (GameObject)Instantiate(bulletPrefab, firepoint.position, firepoint.rotation);                    
-                    bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * bulletSpeed;
+                   
                     AmmoManagement();
                     substractAmmo = totalChamberAmmo - currentChamberAmmo;
                 }
@@ -63,7 +62,7 @@ public class ShootingController : MonoBehaviour
             {
                 Reload();
             }
-        }
+        //}
     }
 
     private void AmmoManagement()
@@ -71,6 +70,8 @@ public class ShootingController : MonoBehaviour
         if (currentChamberAmmo > 0)
         {
             currentChamberAmmo--;
+            var bullet = (GameObject)Instantiate(bulletPrefab, firepoint.position, firepoint.rotation);
+            bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * bulletSpeed;
             FireGun();
         }
         else
@@ -129,11 +130,11 @@ public class ShootingController : MonoBehaviour
         }
     }
 
-    //public void AddAmmo(int ammo)
-    //{
-    //    ammoAudio.Play();
-    //    currentTotalAmmo += ammo;
-    //}
+    public void AddAmmo(int ammo)
+    {
+        //ammoAudio.Play();
+        currentTotalAmmo += ammo;
+    }
 
     private void UpdateHUD()
     {
