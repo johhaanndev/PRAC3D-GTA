@@ -8,8 +8,8 @@ public class BonusZombieSpawn : MonoBehaviour
     public GameObject zombiePrefab;
     public Transform[] spawnPoints;
 
-    private int countdownSeconds = 5;
-    private int countdownMinutes = 0;
+    private int countdownSeconds = 59;
+    private int countdownMinutes = 4;
 
     private float timer = 0;
     private float timeBetweenSpawn = 5;
