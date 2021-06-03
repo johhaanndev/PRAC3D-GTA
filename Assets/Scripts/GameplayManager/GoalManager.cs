@@ -11,7 +11,7 @@ public class GoalManager : MonoBehaviour
 
     private bool survivedZone = false;
 
-    private int totalGems = 1;
+    private int totalGems = 12;
     private int currentGemsDestroyed = 0;
 
     public TextMeshProUGUI mission1Text;
@@ -19,6 +19,9 @@ public class GoalManager : MonoBehaviour
     public TextMeshProUGUI mission2Text;
 
     public GameObject fadeInWin;
+
+    public AudioSource rockSong;
+    public AudioSource gameSong;
 
     public void GemDestroyed()
     {
@@ -41,6 +44,8 @@ public class GoalManager : MonoBehaviour
     {
         if (!survivedZone)
         {
+            rockSong.Stop();
+            gameSong.Play();
             survivedZone = true;
             goalsCompleted++;
             mission2Text.color = Color.green;

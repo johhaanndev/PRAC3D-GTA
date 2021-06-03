@@ -20,12 +20,16 @@ public class BonusZombieSpawn : MonoBehaviour
     private bool survived = false;
     public GoalManager goalManager;
 
+    public AudioSource rockSong;
+    public AudioSource gameSong;
+
     // Start is called before the first frame update
     void Start()
     {
         timeBackground.SetActive(true);
         timerText.gameObject.SetActive(true);
         StartTimer();
+        Invoke(nameof(PlaySong), 6f);
     }
 
     // Update is called once per frame
@@ -109,5 +113,9 @@ public class BonusZombieSpawn : MonoBehaviour
         }
     }
 
-
+    private void PlaySong()
+    {
+        rockSong.Play();
+        gameSong.Stop();
+    }
 }

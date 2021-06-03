@@ -33,6 +33,9 @@ public class ShootingController : MonoBehaviour
     public Text currentAmmoText;
     public Text remainingAmmoText;
 
+    public AudioSource reloadClip;
+    public AudioSource ammoClip;
+
     private float timer;
 
     // Start is called before the first frame update
@@ -104,7 +107,7 @@ public class ShootingController : MonoBehaviour
             else
             {
                 Debug.Log("Reload");
-                //reloadAudio.Play();
+                reloadClip.Play();
                 if (currentTotalAmmo <= totalChamberAmmo)
                 {
 
@@ -132,7 +135,7 @@ public class ShootingController : MonoBehaviour
 
     public void AddAmmo(int ammo)
     {
-        //ammoAudio.Play();
+        ammoClip.Play();
         currentTotalAmmo += ammo;
     }
 
