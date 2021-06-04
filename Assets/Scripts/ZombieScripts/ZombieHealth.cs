@@ -22,7 +22,7 @@ public class ZombieHealth : MonoBehaviour
                 GetComponent<ZombieAI>().anim.SetTrigger("Die");
 
                 float lootProbability = Random.Range(0f, 100f);
-                if (lootProbability >= 50)
+                if (lootProbability >= 25)
                 {
                     var ammo = (GameObject)Instantiate(ammoBox, transform.position, transform.rotation);
                 }

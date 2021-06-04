@@ -74,6 +74,7 @@
     <Compile Include="Assets\Scripts\GameplayManager\LoadScenes.cs" />
     <Compile Include="Assets\Scripts\HUDScripts\Dialogues.cs" />
     <Compile Include="Assets\Scripts\HUDScripts\HealthBarHUD.cs" />
+    <Compile Include="Assets\Scripts\HUDScripts\YouDiedMenuController.cs" />
     <Compile Include="Assets\Scripts\HumanScripts\HumanController.cs" />
     <Compile Include="Assets\Scripts\LevelZones\BonusZoneActivator.cs" />
     <Compile Include="Assets\Scripts\ParticlesScripts\ParticleManager.cs" />
